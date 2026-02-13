@@ -13,7 +13,14 @@ const Home = () => {
       <ThemedText style={styles.title} title={true}>
         SHELFIE
       </ThemedText>
-      <ThemedLogo />
+      <ThemedLogo
+        style={{
+          width: "40%",
+          height: undefined,
+          aspectRatio: 1,
+          resizeMode: "contain",
+        }}
+      />
       <Spacer height={20} />
       {/*<Image source={uri:'yourimage'}/>*/}
       <ThemedText style={styles.title} title={true}>

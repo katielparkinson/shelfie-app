@@ -7,7 +7,9 @@ import ThemedText from "../components/ThemedText";
 const About = () => {
   return (
     <ThemedView style={styles.container}>
-      <ThemedText style={styles.title}>About Page</ThemedText>
+      <ThemedText style={styles.title} title={true}>
+        About Page
+      </ThemedText>
       <Link href="/" style={styles.link}>
         <ThemedText>Home</ThemedText>
       </Link>
