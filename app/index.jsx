@@ -1,52 +1,53 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
-import { Link} from 'expo-router'
+import { StyleSheet, Text, Image } from "react-native";
+import { Link } from "expo-router";
 
-import Logo from '../assets/img/logo_light.png'
+//themed component imports
+import ThemedView from "../components/ThemedView";
+import ThemedLogo from "../components/ThemedLogo";
+import Spacer from "../components/Spacer";
+import ThemedText from "../components/ThemedText";
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Text style={[styles.title,{fontSize: 30}]}>SHELFIE</Text>
-      <Image source={Logo} style={styles.img}/>
+    <ThemedView style={styles.container}>
+      <ThemedText style={styles.title} title={true}>
+        SHELFIE
+      </ThemedText>
+      <ThemedLogo />
+      <Spacer height={20} />
       {/*<Image source={uri:'yourimage'}/>*/}
+      <ThemedText style={styles.title} title={true}>
+        The Number 1
+      </ThemedText>
+      <Spacer height={10} />
+      <ThemedText>Reading List App</ThemedText>
+      <Spacer />
+      <Link href="/about" style={styles.link}>
+        <ThemedText>About Page</ThemedText>
+      </Link>
+      <Link href="/contact" style={styles.link}>
+        <ThemedText>Contact Page</ThemedText>
+      </Link>
+    </ThemedView>
+  );
+};
 
-      <Text style={[styles.title, {color: 'black'}]}>The Number 1</Text>
-
-      <Text style={{marginTop: 10, marginBottom: 30}}>
-        {/*in line style*/}
-        Reading List App
-      </Text>
-        
-      <Link href='/about' style={styles.link}>About Page</Link>
-      
-      <Link href='/contact' style={styles.link}>Contact Page</Link>
-    </View>
-    
-  )
-}
-
-export default Home
+export default Home;
 
 const styles = StyleSheet.create({
-    //rules defined inside it
-    //container will contain CSS properties, camelcase because it is JS
-    container:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontWeight: 'bold',
-        fontSize: 18,
-    },
-    img: {
-        marginVertical:20,
-        width: 150,
-        height: 150,
-    },
-    link:{
-        marginVertical: 10,
-        borderBottomWidth: 1,
-    }
-})
+  //rules defined inside it
+  //container will contain CSS properties, camelcase because it is JS
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  link: {
+    marginVertical: 10,
+    borderBottomWidth: 1,
+  },
+});
