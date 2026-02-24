@@ -18,11 +18,14 @@ import ThemedTextInput from "../../components/ThemedTextInput";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user } = useUser();
+  const { user, login } = useUser();
 
-  const handleSubmit = () => {
-    console.log("Current User:", user);
-    console.log("Login form submitted", email, password);
+  const handleSubmit = async () => {
+    try {
+      await login(email, password);
+    } catch (error) {
+      console.log("no workie workie");
+    }
   };
 
   return (

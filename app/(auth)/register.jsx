@@ -7,6 +7,7 @@ import {
 import { Link } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { useState } from "react";
+import { useUser } from "../../hooks/useUser";
 //themed component imports
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
@@ -18,8 +19,14 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    console.log("register form submitted", email, password);
+  const { user, register } = useUser();
+
+  const handleSubmit = async () => {
+    try {
+      await register(email, password);
+    } catch (error) {
+      console.log("no workie workie");
+    }
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
