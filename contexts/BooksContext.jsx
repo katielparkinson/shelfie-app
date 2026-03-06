@@ -61,6 +61,11 @@ export function BooksProvider({ children }) {
   }
   async function deleteBook(id) {
     try {
+      await databases.deleteRow({
+        databaseId: DATABASE_ID,
+        tableId: COLLECTION_ID,
+        rowId: id,
+      });
     } catch (error) {
       console.error(error.message);
     }
@@ -81,6 +86,11 @@ export function BooksProvider({ children }) {
 
         if (events[0].includes("create")) {
           setBooks((prevBooks) => [...prevBooks, payload]);
+        }
+        if (events[0].includes("delete")) {
+          setBooks((prevBooks) =>
+            prevBooks.filter((book) => book.$id !== payload.$id),
+          );
         }
       });
     } else {
