@@ -30,8 +30,14 @@ export function BooksProvider({ children }) {
       console.error("fetchBooks error:", error.message);
     }
   }
-  async function fetchBookId(id) {
+  async function fetchBookById(id) {
     try {
+      const response = await databases.getRow({
+        databaseId: DATABASE_ID,
+        tableId: COLLECTION_ID,
+        rowId: id,
+      });
+      return response;
     } catch (error) {
       console.error(error.message);
     }
@@ -87,7 +93,7 @@ export function BooksProvider({ children }) {
 
   return (
     <BooksContext.Provider
-      value={{ books, fetchBooks, fetchBookId, createBook, deleteBook }}
+      value={{ books, fetchBooks, fetchBookById, createBook, deleteBook }}
     >
       {children}
     </BooksContext.Provider>
